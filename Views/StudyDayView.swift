@@ -7,7 +7,11 @@ struct StudyDayView: View {
     var body: some View {
         List {
             ForEach(day.tasks) { task in
-                TaskRowView(task: task) {
+                TaskRowView(
+                    task: task,
+                    subjectName: plannerViewModel.subjectName(for: task.subjectID),
+                    subjectColorHex: plannerViewModel.color(for: task.subjectID)
+                ) {
                     plannerViewModel.toggleTask(dayID: day.id, taskID: task.id)
                 }
             }
